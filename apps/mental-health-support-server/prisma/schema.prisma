@@ -1,0 +1,63 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model UserProfile {
+  address   String?
+  age       Int?
+  createdAt DateTime @default(now())
+  firstName String?
+  id        String   @id @default(cuid())
+  lastName  String?
+  updatedAt DateTime @updatedAt
+}
+
+model WebsiteUser {
+  createdAt DateTime @default(now())
+  email     String?
+  id        String   @id @default(cuid())
+  isCrisis  Boolean?
+  password  String?
+  updatedAt DateTime @updatedAt
+  username  String?
+}
+
+model Authentification {
+  createdAt DateTime @default(now())
+  email     String?
+  id        String   @id @default(cuid())
+  password  String?
+  updatedAt DateTime @updatedAt
+  username  String?
+}
+
+model Database {
+  connectionString String?
+  createdAt        DateTime @default(now())
+  id               String   @id @default(cuid())
+  name             String?
+  typeField        String?
+  updatedAt        DateTime @updatedAt
+}
+
+model ActivityRecommendations {
+  activityType String?
+  createdAt    DateTime @default(now())
+  description  String?
+  id           String   @id @default(cuid())
+  link         String?
+  updatedAt    DateTime @updatedAt
+}
+
+model Chatbot {
+  answer    String?
+  createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
+  question  String?
+  updatedAt DateTime @updatedAt
+}
